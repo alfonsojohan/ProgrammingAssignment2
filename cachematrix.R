@@ -55,3 +55,25 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
+# cacheSolve
+# Function that returns the Inverse square value of a matrix.
+# First, it tries to obtain the value from the cached of the passed object
+# If the return value is NOT NULL, then it will return the cached value,
+# else it will calculate the new value of the inverse square
+cacheSolve <- function(x, ...) {
+  
+  # Get the value from the cache, if the value of the matrix has not changed
+  # then the returned value will NOT be NULL
+  m <- x$getinverse()
+  if (!is.null(m)) {
+    message("Getting value from cache")
+    return(m)
+  }
+  
+  # Get the matrix from the cache and calculate the inverse square
+  thematrix <- x$get()
+  i <- solve(thematrix)
+  x$setinverse(i)
+  i
+}
+
