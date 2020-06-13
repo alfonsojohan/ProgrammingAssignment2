@@ -62,8 +62,10 @@ makeCacheMatrix <- function(x = matrix()) {
 # else it will calculate the new value of the inverse square
 cacheSolve <- function(x, ...) {
   
-  # Get the value from the cache, if the value of the matrix has not changed
-  # then the returned value will NOT be NULL
+  # Get the value of the inverse square from the cache, if the value of 
+  # the matrix has not changed the returned value will be *NOT NULL*
+  # If the value is from cache then we use the return() function to 
+  # return the inverse square value and exit cacheSolve() 
   m <- x$getinverse()
   if (!is.null(m)) {
     message("Getting value from cache")
